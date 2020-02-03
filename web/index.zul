@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window apply="com.ZK_proyecto_lab.controladores.Login">
+    <style src="/Recursos/bootstrap.min.css" />
+    <button label="Iniciar Sesion" id="btn_login" class="btn btn-primary btn-block"/>
+</window>
+</zk>

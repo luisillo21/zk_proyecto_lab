@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    
+ <window border="normal" width="800px" title="Bienvenido" id="form_login" class="text-center" apply="com.ZK_proyecto_lab.controladores.Validar_usuario">
+      <auxhead>
+            <auxheader  class="text-center" label="Ingresa tus credenciales" style="font-size:15px;"/>
+     </auxhead>
+     <space width="4px"/>
+    <grid> <!-- hflex="1" - available width inside parent (window) -->
+        <rows>
+            <row>
+               <label value="Usuario" class="text-dark h6 "/>  <textbox  id="usuario" hflex="1" class="form-control" constraint="no empty"/>
+            </row>
+            
+            <row>
+               <label value="Contraseña" class="text-dark h6 "/>  <textbox type="password" id="clave" hflex="2" class="form-control" constraint="no empty"/>
+            </row>
+            <row spans="2" align="center">
+                    <button id="btn_logear" class="btn btn-primary btn-block" label="Ingresar"/>
+            </row>
+            
+              <row spans="2" align="center">
+                    <button id="btn_salir" onClick="form_login.detach()" class="btn btn-danger btn-block" label="Cerrar"/>
+              </row>
+            
+            
+        </rows>
+    </grid>
+</window>
+
+</zk>

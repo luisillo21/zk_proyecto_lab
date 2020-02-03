@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+     <style src="/Recursos/bootstrap.min.css" />
+     <style>
+    .combodivarea { 
+    background-image:url('../img/bg.png');
+    }
+ 
+    .labelheader {
+    font-family:Arial; 
+    font-size:20px;
+    color:#c2c2c2;
+    }
+ 
+    .boxlabel {
+    font-family:Arial;
+    font-weight: bold;
+    font-size: 12px;
+    color:#002b37;
+    }
+ 
+    .z-comboitem {
+    padding-bottom:4px;
+    }
+ 
+    .z-comboitem-image {
+    margin-top: 0;
+    }
+         
+     </style>
+    <window id="operacion"  border="normal" height="650px" width="600px"
+        apply="com.ZK_proyecto_lab.controladores.Crud_productos"
+            
+            position="center,center" closable="false"
+            action="show: slideDown;hide: slideUp">
+        <div align="center">
+            <grid width="600px" >   
+                <columns>
+                    <column width="60px" align="right" />
+                    <column width="160px" align="left" />
+                    <column width="60px" align="left" />
+                    <column width="180px" align="left" />
+                </columns>     
+                <rows>
+                    <row>                    
+                        Producto:   
+                        <textbox id="producto" value="" width="150px"/>                   
+                        Categoria:
+                        <combobox id="categoria" value="" width="150px">
+                         <attribute name="onCreate">
+                         <![CDATA[
+                            Consumir_web_service ws = new Consumir_web_service();
+                            JSONObject obj =  ws.listarCategorias("lstCategorias.php");
+                            for(int i = 0;i<obj.lenght();i++){
+                                listarCategorias    
+                            }
+                        ]]>
+                        </attribute>
+                        </combobox>                                
+                    </row>                  
+                </rows>
+            </grid>  
+     
+            <grid  width="510px">
+           
+                <rows>
+                    <row>
+                        <label value="Nombre" width="180px" />
+                       
+                        <textbox id="insumo" style="text-align: center;" width="190px" onChange="self.setValue(self.getValue().toUpperCase().trim());"  />                      
+                    </row>
+                    <row>                  
+                        <label value="Marca" width="180px" />
+                        <combobox id="marcaC" value="" width="190px" style="text-align: center;"/>                                                        
+                    </row>  
+                    <row>                  
+                        <label value="Unidad de Medida:" width="180px" />
+                        <combobox id="unidadM" value="" width="190px" style="text-align: center;"/>                                                      
+                    </row> 
+                    <row>
+                        <label value="Precio" width="180px" />
+                        <doublebox id="precio" value="0"  maxlength="10" width="190px" style="text-align: center;"/> 
+                    </row>
+                    <row>
+                        <label value="Cantidad:" width="190px" />
+                        <intbox id="cantidad"  value="0" maxlength="6" width="120px" style="text-align: center;"/>   
+                     
+                    </row>
+                    <row>
+                        <label value="Costo Total:" width="180px" />
+                        <doublebox id="costo" value="0"  maxlength="10" width="190px" style="text-align: center;"/> 
+                    </row> 
+
+                </rows>
+            </grid>
+  
+            <grid >   
+                <columns>
+                    <column width="60px" align="center" />
+                    <column width="120px" align="center" />
+                    <column width="90px" align="center" />
+                    <column width="180px" align="center" />
+                </columns>     
+                <rows>
+                    <row>                    
+                        Nuevo:   
+                        <button id="agrega2"  height="25px" width="20px" hflex="1" label="Agregar +"
+                                style="align=center;font-size: 11.50px;"/>   
+                        <div align="center" >            
+                            Iva:
+                            <combobox id="iva" value="" width="130px"/>                           
+                        </div>                             
+                    </row>
+                    
+                </rows>
+            </grid>  
+        </div> 
+        <div> 
+            <div  >
+                <groupbox width="600px" height="205px" >	
+                    <listbox id="tabla"  hflex="1" >
+                        <listhead id="cabecera">
+                            <listheader label="# Item" width="40px" align="center" />
+                            <listheader label="Nombre" width="120px" align="center"  />      
+                            <listheader label="Categoria" width="110px" align="center"  />   
+                            <listheader label="Marca" width="110px" align="center"  />  
+                            <listheader label="Medida" width="100px" align="center"  />   
+                            <listheader label="Valor" width="100px" align="center"  />                              
+                        </listhead>        
+                    </listbox>         
+                </groupbox>
+            
+            <space height="10px"/>
+                <div align="center"> 
+                    <label value="Costo Total:" width="180px" />
+                    <doublebox id="total" value="0" style="text-align: center;" maxlength="10" width="190px"/> 
+                </div>  
+            </div> 
+            <space height="10px"/>
+            <div align="center"> 
+                <grid  width="400px">   
+                    <columns>
+            
+                    </columns>     
+                    <rows>
+                        <row align="center"> 
+                            <button id="grabar1" height="22px" width="20px" hflex="1" label="CSV"/>                   
+                            <button id="closeBtn1" height="22px" width="20px" hflex="1" label="Cerrar" />                   
+                        </row>
+                    </rows>
+                </grid>    
+
+            </div>
+        </div>
+     
+    </window>
+    
+</zk>
